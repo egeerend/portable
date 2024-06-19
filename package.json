@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/egeerend.github.io/portable",
   "name": "atomize",
   "version": "1.0.21",
   "main": "index.js",
@@ -7,9 +8,11 @@
     "dist"
   ],
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server",
     "docs": "NODE_ENV=production webpack -p",
-    "build": "babel src -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "webpack --mode production",
     "clean": "rm -rf dist",
     "dist": "yarn run clean && yarn run build"
   },
@@ -27,7 +30,10 @@
     "styletron-react": "^5.2.0",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1"
+    "webpack-dev-server": "^3.4.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^4.5.0",
+    "gh-pages": "^3.1.0"
   },
   "peerDependencies": {
     "react": ">= 16",
