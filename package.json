@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/egeerend.github.io/portable",
+  "homepage": "https://egeerend.github.io/portable",
   "name": "atomize",
   "version": "1.0.21",
   "main": "index.js",
@@ -8,13 +8,13 @@
     "dist"
   ],
   "scripts": {
-    "start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server",
-    "docs": "NODE_ENV=production webpack -p",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "webpack --mode production",
-    "clean": "rm -rf dist",
-    "dist": "yarn run clean && yarn run build"
+    "start": "webpack-dev-server",
+    "docs": "NODE_ENV=production webpack -p",
+    "build": "babel src -d build",
+    "clean": "rm -rf build",
+    "dist": "npm run clean && npm run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -22,13 +22,10 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
-    "gh-pages": "^3.1.0",
-    "html-webpack-plugin": "^4.5.2",
     "prism-react-renderer": "^0.1.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-transition-group": "^4.4.5",
+    "react-transition-group": "^4.1.1",
     "styletron-engine-atomic": "^1.4.0",
     "styletron-react": "^5.2.0",
     "webpack": "^4.32.2",
@@ -41,8 +38,5 @@
     "react-transition-group": ">= 4",
     "styletron-engine-atomic": "^1.4.0",
     "styletron-react": "^5.2.0"
-  },
-  "dependencies": {
-    "atomize": "^1.0.28"
   }
 }
